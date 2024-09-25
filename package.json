@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspace @pdevzero-inc/react-log-viewer build",
+    "build": "yarn workspace @devzero-inc/react-log-viewer build",
     "build:watch": "npm run build:watch -w @devzero-inc/react-log-viewer",
     "build:docs": "yarn workspace @devzero-inc/react-log-viewer docs:build",
     "start": "concurrently --kill-others \"npm run build:watch\" \"npm run docs:develop -w @devzero-inc/react-log-viewer\"",
