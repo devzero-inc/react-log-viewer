@@ -16,7 +16,7 @@ export default ${JSON.stringify(classMap, null, 2)};
  */
 function writeClassMaps(classMaps) {
   Object.entries(classMaps).forEach(([file, classMap]) => {
-    const packageBase = dirname(require.resolve('@patternfly/react-log-viewer/package.json'));
+    const packageBase = dirname(require.resolve('@devzero-inc/react-log-viewer/package.json'));
     const relativeFilePath = relative(packageBase, file);
 
     // write the export map in TS and put it in src, from here TS will compile it to the different module types at build time
