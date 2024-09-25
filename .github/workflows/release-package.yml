@@ -3,6 +3,8 @@ name: Node.js Package
 on:
   release:
     types: [created]
+env:
+  API_CLIENT_PKG_TOKEN: ${{ secrets.API_CLIENT_PKG_TOKEN }}
 
 jobs:
   build:
