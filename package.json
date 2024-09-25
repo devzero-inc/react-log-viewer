@@ -1,5 +1,5 @@
 {
-  "name": "@patternfly/react-log-viewer-root",
+  "name": "@devzero-inc/react-log-viewer-root",
   "private": true,
   "version": "0.0.0",
   "description": "This library provides patternfly extensions",
@@ -8,18 +8,18 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspace @patternfly/react-log-viewer build",
-    "build:watch": "npm run build:watch -w @patternfly/react-log-viewer",
-    "build:docs": "yarn workspace @patternfly/react-log-viewer docs:build",
-    "start": "concurrently --kill-others \"npm run build:watch\" \"npm run docs:develop -w @patternfly/react-log-viewer\"",
-    "serve:docs": "yarn workspace @patternfly/react-log-viewer docs:serve",
-    "clean": "yarn workspace @patternfly/react-log-viewer clean",
+    "build": "yarn workspace @pdevzero-inc/react-log-viewer build",
+    "build:watch": "npm run build:watch -w @devzero-inc/react-log-viewer",
+    "build:docs": "yarn workspace @devzero-inc/react-log-viewer docs:build",
+    "start": "concurrently --kill-others \"npm run build:watch\" \"npm run docs:develop -w @devzero-inc/react-log-viewer\"",
+    "serve:docs": "yarn workspace @devzero-inc/react-log-viewer docs:serve",
+    "clean": "yarn workspace @devzero-inc/react-log-viewer clean",
     "lint:js": "node --max-old-space-size=4096 node_modules/.bin/eslint packages --ext js,jsx,ts,tsx --cache",
     "lint:md": "yarn eslint packages --ext md --no-eslintrc --config .eslintrc-md.json --cache",
     "lint": "yarn lint:js && yarn lint:md",
     "test": "TZ=EST jest packages",
-    "test:a11y": "yarn workspace @patternfly/react-log-viewer test:a11y",
-    "serve:a11y": "yarn workspace @patternfly/react-log-viewer serve:a11y"
+    "test:a11y": "yarn workspace @devzero-inc/react-log-viewer test:a11y",
+    "serve:a11y": "yarn workspace @devzero-inc/react-log-viewer serve:a11y"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
