@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react';
 import {
   NUMBER_INDEX_DELTA,
   DEFAULT_FOCUS,
@@ -17,11 +17,11 @@ export interface LogViewerSearchProps extends SearchInputProps {
   minSearchChars: number;
 }
 
-export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = ({
+export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = forwardRef(({
   placeholder = 'Search',
   minSearchChars = 1,
   ...props
-}) => {
+}, ref) => {
   const [indexAdjuster, setIndexAdjuster] = useState(0);
   const {
     searchedWordIndexes,
@@ -38,6 +38,12 @@ export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = ({
   const { parsedData } = useContext(LogViewerContext);
 
   const defaultRowInFocus = { rowIndex: DEFAULT_FOCUS, matchIndex: DEFAULT_MATCH };
+
+  useImperativeHandle(ref, () => ({
+    setSearchedInputExternal(input: string) {
+      setSearchedInput(input)
+    }
+  }));
 
   /* Defaulting the first focused row that contain searched keywords */
   useEffect(() => {
@@ -105,6 +111,7 @@ export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = ({
       resultsCount={`${currentSearchedItemCount + indexAdjuster} / ${hasFoundResults ? searchedWordIndexes.length : 0}`}
       {...props}
       onChange={(event, input) => {
+        console.log('change', event, input)
         props.onChange && props.onChange(event, input);
         setSearchedInput(input);
       }}
@@ -122,5 +129,5 @@ export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = ({
       }}
     />
   );
-};
+});
 LogViewerSearch.displayName = 'LogViewerSearch';
