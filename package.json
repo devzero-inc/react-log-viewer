@@ -1,6 +1,5 @@
 {
   "name": "@devzero-inc/react-log-viewer-root",
-  "private": true,
   "version": "0.0.0",
   "description": "This library provides patternfly extensions",
   "license": "MIT",
