@@ -16,13 +16,11 @@ export interface LogViewerSearchProps extends SearchInputProps {
   /** Minimum number of characters required for searching */
   minSearchChars: number;
   ref: any;
-  parentSearchCB: any;
 }
 
 export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = forwardRef(({
   placeholder = 'Search',
   minSearchChars = 1,
-  parentSearchCB,
   ...props
 }, ref) => {
   const [indexAdjuster, setIndexAdjuster] = useState(0);
@@ -47,7 +45,7 @@ export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = fo
       setSearchedInput(input)
     },
     hasFoundResults: searchedWordIndexes?.length > 0 && searchedWordIndexes[0]?.rowIndex !== -1,
-    
+    searchedInput,
   }));
 
   /* Defaulting the first focused row that contain searched keywords */
@@ -87,9 +85,6 @@ export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = fo
     setCurrentSearchedItemCount(DEFAULT_INDEX);
     setSearchedWordIndexes([]);
     setRowInFocus(defaultRowInFocus);
-    if (parentSearchCB) {
-      parentSearchCB();
-    }
   };
 
   /* Moving focus over to next row containing searched word */
