@@ -22,6 +22,7 @@ export interface LogViewerSearchProps extends SearchInputProps {
 export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = forwardRef(({
   placeholder = 'Search',
   minSearchChars = 1,
+  parentSearchCB,
   ...props
 }, ref) => {
   const [indexAdjuster, setIndexAdjuster] = useState(0);
@@ -86,8 +87,8 @@ export const LogViewerSearch: React.FunctionComponent<LogViewerSearchProps> = fo
     setCurrentSearchedItemCount(DEFAULT_INDEX);
     setSearchedWordIndexes([]);
     setRowInFocus(defaultRowInFocus);
-    if (props.parentSearchCB) {
-      props.parentSearchCB();
+    if (parentSearchCB) {
+      parentSearchCB();
     }
   };
 
